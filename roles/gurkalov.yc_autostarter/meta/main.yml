@@ -1,0 +1,25 @@
+---
+galaxy_info:
+  role_name: yc_autostarter
+  author: Gurkalov Dmitry
+  description: Create Yandex.Cloud Instance autostarter.
+  company: Gurkalov
+  license: MIT
+  min_ansible_version: 2.2
+  issue_tracker_url: https://github.com/gurkalov/yc_autostarter/issues
+
+  platforms:
+    - name: Debian
+      versions:
+        - jessie
+        - stretch
+    - name: Ubuntu
+      versions:
+        - trusty
+        - xenial
+        - bionic
+
+  galaxy_tags:
+    - yandexcloud
+
+dependencies: []

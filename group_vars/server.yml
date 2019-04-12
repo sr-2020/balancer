@@ -1,0 +1,21 @@
+---
+service_account_id: "{{ vault_service_account_id }}"
+key_id: "{{ vault_key_id }}"
+
+instance_ip: "{{ vault_instance_ip }}"
+instance_name: "{{ vault_instance_name }}"
+
+private_key: "{{ vault_private_key }}"
+
+nginx_remove_default_vhost: true
+
+nginx_domain: 'evarun.ru'
+nginx_port: '80'
+nginx_proxy_pass:  |
+  location / {
+    proxy_pass http://{{ item.name }};
+  }
+
+nginx_services:
+  - { name: 'position', port: '80'}
+  - { name: 'demo', port: '8080'}

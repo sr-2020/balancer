@@ -1,0 +1,6 @@
+- hosts: server
+  gather_facts: False
+
+  tasks:
+  - name: Install python 2.7
+    raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)

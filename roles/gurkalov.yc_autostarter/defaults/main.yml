@@ -1,0 +1,12 @@
+---
+# defaults file for yc_autostarter
+service_account_id: ""
+key_id: ""
+
+instance_ip: ""
+instance_name: ""
+
+private_key: ""
+
+job_path: /var/job/yc-autostarter
+composer_path: /usr/local/bin/composer
