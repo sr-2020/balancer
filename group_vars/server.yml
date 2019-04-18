@@ -17,5 +17,7 @@ nginx_proxy_pass:  |
   }
 
 nginx_services:
-  - { name: 'position', port: '80'}
-  - { name: 'demo', port: '8080'}
+  - { name: 'platform', port: '5501'}
+  - { name: 'position', port: '5501'}
+  - { name: 'pma', port: '5502'}
+  - { name: 'redmine', port: '7501'}
