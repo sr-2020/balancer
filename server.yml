@@ -11,5 +11,5 @@
         - nginx
 
   roles:
+    - {role: gurkalov.create_users, tags: users, become: yes}
     - {role: geerlingguy.nginx, tags: nginx, become: yes}
-    - {role: gurkalov.yc_autostarter, tags: yc_autostarter, become: yes}

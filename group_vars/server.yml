@@ -21,3 +21,9 @@ nginx_services:
   - { name: 'position', port: '5501'}
   - { name: 'pma', port: '5502'}
   - { name: 'redmine', port: '7501'}
+
+users:
+  - name: aeremin
+    sudo: true
+    sudo_nopasswd: true
+    ssh_key: "{{vault_aeremin_key}}"
