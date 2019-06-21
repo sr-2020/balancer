@@ -13,14 +13,17 @@ nginx_domain: 'evarun.ru'
 nginx_port: '80'
 nginx_proxy_pass:  |
   location / {
+    proxy_set_header Host {{ item.name }}.{{nginx_domain}};
     proxy_pass http://{{ item.name }};
   }
 
 nginx_services:
-  - { name: 'platform', port: '5501'}
-  - { name: 'position', port: '5501'}
-  - { name: 'pma', port: '5502'}
-  - { name: 'redmine', port: '7501'}
+  - { name: 'gateway', port: '7000'}
+  - { name: 'auth', port: '7002'}
+  - { name: 'position', port: '7003'}
+  - { name: 'billing', port: '7004'}
+  - { name: 'push', port: '7005'}
+  - { name: 'pma', port: '7050'}
 
 users:
   - name: aeremin
