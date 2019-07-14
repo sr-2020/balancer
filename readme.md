@@ -27,7 +27,9 @@ nginx_services:
   - { name: 'position', port: '7003'}
   - { name: 'billing', port: '7004'}
   - { name: 'push', port: '7005'}
-  - { name: 'newservice', port: '7006'}
+  - { name: 'model-engine', port: '7006'}
+  - { name: 'models-manager', port: '7007'}
+  - { name: 'newservice', port: '7008'}
   - { name: 'pma', port: '7050'}
 
 ```
