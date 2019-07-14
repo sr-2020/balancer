@@ -13,6 +13,8 @@ nginx_domain: 'evarun.ru'
 nginx_port: '80'
 nginx_proxy_pass:  |
   location / {
+    add_header Access-Control-Allow-Origin *;
+
     proxy_set_header Host {{ item.name }}.{{nginx_domain}};
     proxy_pass http://{{ item.name }};
   }
