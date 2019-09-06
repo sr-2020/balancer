@@ -28,6 +28,7 @@ nginx_services:
   - { name: 'model-engine', port: '7006'}
   - { name: 'models-manager', port: '7007'}
   - { name: 'pma', port: '7050'}
+  - { name: 'ppa', port: '7051'}
 
 users:
   - name: aeremin
