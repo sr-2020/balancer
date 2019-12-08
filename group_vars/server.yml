@@ -13,22 +13,24 @@ nginx_domain: 'evarun.ru'
 nginx_port: '80'
 nginx_proxy_pass:  |
   location / {
-    add_header Access-Control-Allow-Origin *;
+    {{ item.headers }}
 
     proxy_set_header Host {{ item.name }}.{{nginx_domain}};
     proxy_pass http://{{ item.name }};
   }
 
+ngixn_add_header_cors: 'add_header Access-Control-Allow-Origin *;'
+
 nginx_services:
-  - { name: 'gateway', port: '7000'}
-  - { name: 'auth', port: '7002'}
-  - { name: 'position', port: '7003'}
-  - { name: 'billing', port: '7004'}
-  - { name: 'push', port: '7005'}
-  - { name: 'model-engine', port: '7006'}
-  - { name: 'models-manager', port: '7007'}
-  - { name: 'pma', port: '7050'}
-  - { name: 'ppa', port: '7051'}
+  - { name: 'gateway', port: '7000', headers: "{{ ngixn_add_header_cors }}"}
+  - { name: 'auth', port: '7002', headers: "{{ ngixn_add_header_cors }}"}
+  - { name: 'position', port: '7003', headers: "{{ ngixn_add_header_cors }}"}
+  - { name: 'billing', port: '7004', headers: ''}
+  - { name: 'push', port: '7005', headers: ''}
+  - { name: 'model-engine', port: '7006', headers: ''}
+  - { name: 'models-manager', port: '7007', headers: ''}
+  - { name: 'pma', port: '7050', headers: ''}
+  - { name: 'ppa', port: '7051', headers: ''}
 
 users:
   - name: aeremin

@@ -1,5 +1,5 @@
 [server]
-46.21.249.11
+35.228.109.159
 
 [localhost]
 127.0.0.1 ansible_connection=local
