@@ -15,7 +15,7 @@
 ```
 touch .vault_pass
 ```
-Добавьте в него пароль: Password ansible vault (В докумете Evarun Infrastructure)
+Добавьте в него пароль: Password ansible vault (См. https://sr2020.atlassian.net/wiki/spaces/IT/pages/12877916/Balancer)
 
 ## <a name="user"></a> Добавить пользователя на сервер
 Вы не сможете без sudo доступа добавить своего пользователя на сервер.
