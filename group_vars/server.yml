@@ -25,7 +25,6 @@ nginx_services:
   - { name: 'gateway', port: '7000', headers: "{{ ngixn_add_header_cors }}"}
   - { name: 'auth', port: '7002', headers: "{{ ngixn_add_header_cors }}"}
   - { name: 'position', port: '7003', headers: "{{ ngixn_add_header_cors }}"}
-  - { name: 'billing', port: '7004', headers: ''}
   - { name: 'push', port: '7005', headers: ''}
   - { name: 'model-engine', port: '7006', headers: ''}
   - { name: 'models-manager', port: '7007', headers: ''}
