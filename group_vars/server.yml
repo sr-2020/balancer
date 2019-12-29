@@ -28,6 +28,8 @@ nginx_services:
   - { name: 'push', port: '7005', headers: ''}
   - { name: 'model-engine', port: '7006', headers: ''}
   - { name: 'models-manager', port: '7007', headers: ''}
+  - { name: 'web', port: '7011', headers: ''}
+  - { name: 'web-backend', port: '7010', headers: ''}
   - { name: 'pma', port: '7050', headers: ''}
   - { name: 'ppa', port: '7051', headers: ''}
 
