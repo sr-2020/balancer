@@ -30,6 +30,7 @@ nginx_services:
   - { name: 'models-manager', port: '7007', headers: ''}
   - { name: 'web', port: '7011', headers: ''}
   - { name: 'web-backend', port: '7010', headers: ''}
+  - { name: 'admin-client', port: '7013', headers: ''}
   - { name: 'pma', port: '7050', headers: ''}
   - { name: 'ppa', port: '7051', headers: ''}
 
