@@ -11,6 +11,7 @@ nginx_remove_default_vhost: true
 
 nginx_domain: 'evarun.ru'
 nginx_port: '80'
+nginx_port_ssl: '443 ssl'
 nginx_proxy_pass:  |
   location / {
     {{ item.headers }}
@@ -19,23 +20,44 @@ nginx_proxy_pass:  |
     proxy_pass http://{{ item.name }};
   }
 
+nginx_ssl_cert:  |
+  ssl_certificate     /etc/letsencrypt/live/{{ item.name }}.{{nginx_domain}}/fullchain.pem;
+  ssl_certificate_key /etc/letsencrypt/live/{{ item.name }}.{{nginx_domain}}/privkey.pem;
+  ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;
+  ssl_ciphers         HIGH:!aNULL:!MD5;
+
 ngixn_add_header_cors: 'add_header Access-Control-Allow-Origin *;'
 
 nginx_services:
-  - { name: 'gateway', port: '7000', headers: "{{ ngixn_add_header_cors }}"}
-  - { name: 'auth', port: '7002', headers: "{{ ngixn_add_header_cors }}"}
-  - { name: 'position', port: '7003', headers: "{{ ngixn_add_header_cors }}"}
-  - { name: 'push', port: '7005', headers: ''}
-  - { name: 'model-engine', port: '7006', headers: ''}
-  - { name: 'models-manager', port: '7007', headers: ''}
-  - { name: 'web', port: '7011', headers: ''}
-  - { name: 'web-backend', port: '7010', headers: ''}
-  - { name: 'admin-client', port: '7013', headers: ''}
-  - { name: 'pma', port: '7050', headers: ''}
-  - { name: 'ppa', port: '7051', headers: ''}
+  - { name: 'gateway', port: '7000', headers: "{{ ngixn_add_header_cors }}", ssl: false}
+  - { name: 'auth', port: '7002', headers: "{{ ngixn_add_header_cors }}", ssl: false}
+  - { name: 'position', port: '7003', headers: "{{ ngixn_add_header_cors }}", ssl: false}
+  - { name: 'push', port: '7005', headers: '', ssl: false}
+  - { name: 'model-engine', port: '7006', headers: '', ssl: false}
+  - { name: 'models-manager', port: '7007', headers: '', ssl: false}
+  - { name: 'web', port: '7011', headers: '', ssl: true}
+  - { name: 'web-backend', port: '7010', headers: '', ssl: false}
+  - { name: 'admin-client', port: '7013', headers: '', ssl: true}
+  - { name: 'pma', port: '7050', headers: '', ssl: false}
+  - { name: 'ppa', port: '7051', headers: '', ssl: false}
 
 users:
   - name: aeremin
     sudo: true
     sudo_nopasswd: true
     ssh_key: "{{vault_aeremin_key}}"
+
+certbot_create_if_missing: true
+certbot_admin_email: tenevoybeg2020@gmail.com
+certbot_certs:
+ - email: tenevoybeg2020@gmail.com
+   domains:
+     - auth.evarun.ru
+ - email: tenevoybeg2020@gmail.com
+   domains:
+     - web.evarun.ru
+ - email: tenevoybeg2020@gmail.com
+   domains:
+     - admin-client.evarun.ru
+
+certbot_auto_renew: false
