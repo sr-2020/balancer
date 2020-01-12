@@ -35,6 +35,7 @@ nginx_services:
   - { name: 'push', port: '7005', headers: '', ssl: false}
   - { name: 'model-engine', port: '7006', headers: '', ssl: false}
   - { name: 'models-manager', port: '7007', headers: '', ssl: false}
+  - { name: 'billing', port: '7009', headers: '', ssl: false}
   - { name: 'web', port: '7011', headers: '', ssl: true}
   - { name: 'web-backend', port: '7010', headers: '', ssl: false}
   - { name: 'admin-client', port: '7013', headers: '', ssl: true}
