@@ -39,8 +39,8 @@ nginx_services:
   - { name: 'web', port: '7011', headers: '', ssl: true}
   - { name: 'web-backend', port: '7010', headers: '', ssl: false}
   - { name: 'admin-client', port: '7013', headers: '', ssl: true}
-  - { name: 'pma', port: '7050', headers: '', ssl: false}
   - { name: 'ppa', port: '7051', headers: '', ssl: false}
+  - { name: 'grafana', port: '7030', headers: '', ssl: false}
 
 users:
   - name: aeremin
