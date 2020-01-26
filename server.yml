@@ -4,7 +4,7 @@
 
   pre_tasks:
     - set_fact:
-        nginx_vhosts: "{{ nginx_vhosts | default([]) | union([{'server_name': item.name + '.' + nginx_domain, 'listen': (nginx_port_ssl if item.ssl else nginx_port), 'extra_parameters': (nginx_ssl_cert if item.ssl else '') + nginx_proxy_pass}])}}"
+        nginx_vhosts: "{{ nginx_vhosts | default([]) | union([{'server_name_redirect': (item.name + '.' + nginx_domain if item.ssl else ''), 'server_name': item.name + '.' + nginx_domain, 'listen': (nginx_port_ssl if item.ssl else nginx_port), 'extra_parameters': (nginx_ssl_cert if item.ssl else '') + nginx_proxy_pass}])}}"
         nginx_upstreams: "{{ nginx_upstreams | default([]) | union([{'name': item.name, 'servers': {instance_ip + ':' + item.port: ''} }])}}"
       with_items: "{{ nginx_services }}"
       tags:
