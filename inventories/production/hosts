@@ -1,5 +1,5 @@
 [server]
-35.228.109.159
+balancer.evarun.ru
 
 [localhost]
 127.0.0.1 ansible_connection=local
