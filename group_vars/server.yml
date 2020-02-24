@@ -46,7 +46,7 @@ ngixn_add_header_cors: |
 nginx_services:
   - { name: 'gateway', port: '7000', headers: "{{ ngixn_add_header_cors }}", ssl: false}
   - { name: 'auth', port: '7002', headers: "{{ ngixn_add_header_cors }}", ssl: false}
-  - { name: 'position', port: '7003', headers: "{{ ngixn_add_header_cors }}", ssl: false}
+  - { name: 'position', port: '7003', headers: "{{ ngixn_add_header_cors }}", ssl: true}
   - { name: 'push', port: '7005', headers: '', ssl: false}
   - { name: 'model-engine', port: '7006', headers: '', ssl: false}
   - { name: 'models-manager', port: '7007', headers: '', ssl: false}
@@ -75,5 +75,8 @@ certbot_certs:
  - email: tenevoybeg2020@gmail.com
    domains:
      - admin-client.evarun.ru
+ - email: tenevoybeg2020@gmail.com
+   domains:
+     - position.evarun.ru
 
 certbot_auto_renew: false
