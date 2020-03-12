@@ -18,6 +18,11 @@ nginx_proxy_pass:  |
 
     proxy_set_header Host {{ item.name }}.{{nginx_domain}};
     proxy_pass http://{{ item.name }};
+
+    proxy_connect_timeout       600;
+    proxy_send_timeout          600;
+    proxy_read_timeout          600;
+    send_timeout                600;
   }
 
 nginx_ssl_cert:  |
@@ -52,7 +57,9 @@ nginx_services:
   - { name: 'models-manager', port: '7007', headers: '', ssl: false}
   - { name: 'billing', port: '7009', headers: '', ssl: false}
   - { name: 'web', port: '7011', headers: '', ssl: true}
+  - { name: 'rc-web', port: '7091', headers: '', ssl: true}
   - { name: 'web-backend', port: '7010', headers: '', ssl: false}
+  - { name: 'rc-web-backend', port: '7090', headers: '', ssl: false}
   - { name: 'admin-client', port: '7013', headers: '', ssl: true}
   - { name: 'ppa', port: '7051', headers: '', ssl: false}
   - { name: 'grafana', port: '7030', headers: '', ssl: false}
@@ -72,6 +79,9 @@ certbot_certs:
  - email: tenevoybeg2020@gmail.com
    domains:
      - web.evarun.ru
+ - email: tenevoybeg2020@gmail.com
+   domains:
+     - rc-web.evarun.ru
  - email: tenevoybeg2020@gmail.com
    domains:
      - admin-client.evarun.ru
